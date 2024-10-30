@@ -40,7 +40,7 @@ public class Classe {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "classe")
+    @OneToMany(mappedBy = "classe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Apprenant> apprenants;
 
 

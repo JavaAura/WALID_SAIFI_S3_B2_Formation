@@ -77,7 +77,7 @@ public class Formation {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "formation")
+    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Apprenant> apprenants;
 
 

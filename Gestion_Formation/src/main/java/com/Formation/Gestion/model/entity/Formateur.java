@@ -1,19 +1,16 @@
 package com.Formation.Gestion.model.entity;
 
-import com.Formation.Gestion.model.entity.Classe;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
+
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Table(name = "formateur")
 @Entity
-@Table(name = "apprenants")
-public class Apprenant {
+public class Formateur {
 
-    @Setter
     @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,37 +19,37 @@ public class Apprenant {
     @Getter
     @Setter
     @Column(name = "nom")
-    private String nom;
+    private  String nom;
 
-    @Setter
+
     @Getter
+    @Setter
     @Column(name = "prenom")
-    private String prenom;
+    private  String prenom;
 
 
-    @Setter
     @Getter
-    @Column(name = "email")
+    @Setter
+    @Column(name ="Email")
     private String email;
 
-    @Setter
     @Getter
-    @Column(name = "niveau")
-    private String niveau;
-
-
     @Setter
-    @Getter
-    @ManyToOne
-    @JoinColumn(name = "classe_id")
-    private Classe classe;
-
+    @Column(name = "specialite")
+    private String specialite;
 
     @Getter
     @Setter
     @ManyToOne
     @JoinColumn(name = "formation_id")
     private Formation formation;
+
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "classe_id")
+    private Classe classe;
+
 
 
 }

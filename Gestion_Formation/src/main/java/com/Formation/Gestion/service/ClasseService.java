@@ -17,12 +17,15 @@ public class ClasseService {
        return this.classeRepo.findAll();
     }
 
-    public  void ajouterClasse(Classe classe){
+    public Classe ajouterClasse(Classe classe){
         this.classeRepo.save(classe);
+        return classe;
     }
 
-    public  void modifierClasse(Classe classe){
+    public Classe modifierClasse(Classe classe){
         this.classeRepo.save(classe);
+
+        return classe;
     }
 
 

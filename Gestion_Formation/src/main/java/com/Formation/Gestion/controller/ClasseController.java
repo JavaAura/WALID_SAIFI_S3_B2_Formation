@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RequestMapping("/classe")
 @RestController
@@ -25,27 +25,32 @@ public class ClasseController {
     }
 
     @PostMapping("/ajouter")
-    public ResponseEntity<String> ajouterClasse(@RequestParam String name, @RequestParam int  numSalle){
+    public ResponseEntity<Classe> ajouterClasse(@RequestParam String name, @RequestParam int numSalle) {
         Classe classe = new Classe();
         classe.setNom(name);
         classe.setNumSalle(numSalle);
-        this.classeService.ajouterClasse(classe);
-        return ResponseEntity.ok("Classe ajoutée avec succès.   " +classe);
+        Classe savedClasse = this.classeService.ajouterClasse(classe);
+        return ResponseEntity.ok(savedClasse);
     }
+
 
 
     @PutMapping("/modifier/{id}")
-    public ResponseEntity<String> modifierClasse(@PathVariable Long id,@RequestParam String name, @RequestParam int  numSalle){
-        Classe classe = classeService.getClasseById(id);
-        if (classe == null) {
-            return ResponseEntity.status(404).body("Classe non trouvée.");
-        }
+    public ResponseEntity<Map<String, Object>> modifierClasse(@PathVariable Long id, @RequestParam String name, @RequestParam int numSalle) {
+        Optional<Classe> optionalClasse = Optional.ofNullable(classeService.getClasseById(id));
+
+        Classe classe = optionalClasse.get();
         classe.setNom(name);
         classe.setNumSalle(numSalle);
-        this.classeService.modifierClasse(classe);
-        return ResponseEntity.ok("Classe modifiée avec succès.");
+        Classe updatedClasse = this.classeService.modifierClasse(classe);
 
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Classe modifiée avec succès.");
+        response.put("classe", updatedClasse);
+
+        return ResponseEntity.ok(response);
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteClasse(@PathVariable long id) {
         try {

@@ -1,6 +1,5 @@
 package com.Formation.Gestion.model.entity;
 
-import com.Formation.Gestion.model.entity.Classe;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;

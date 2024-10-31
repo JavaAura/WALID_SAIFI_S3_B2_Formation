@@ -1,49 +1,33 @@
 package com.Formation.Gestion.model.dto;
 
-import com.Formation.Gestion.model.entity.*;
-import jakarta.persistence.*;
+import com.Formation.Gestion.model.entity.Formation;
+import com.Formation.Gestion.model.entity.Formateur;
+import com.Formation.Gestion.model.entity.Classe;
+import com.Formation.Gestion.model.entity.Statut;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
 @Builder
-
 public class FormationDto {
 
-
-    private int id;
-
+    private long id;
     private String titre;
-
     private String niveau;
-
-
     private String prerequis;
-
-
     private Integer capaciteMin;
-
     private Integer capaciteMax;
-
     private LocalDate dateDebut;
-
-
     private LocalDate dateFin;
-
-    private Formation formation;
-
-
     private Classe classe;
-
     private Formateur formateur;
-
-    private List<Long> apprenantsId;
-
+    private List<Long> apprenantsId; // Liste utilisée uniquement en lecture
     private Statut statut;
 
+    // Conversion de l'entité Formation vers FormationDto
     public static FormationDto toDto(Formation entity) {
         return FormationDto.builder()
                 .id(entity.getId())
@@ -55,10 +39,11 @@ public class FormationDto {
                 .dateDebut(entity.getDateDebut())
                 .dateFin(entity.getDateFin())
                 .statut(entity.getStatut())
+                .classe(entity.getClasse())
+                .formateur(entity.getFormateur())
                 .build();
     }
 
-    
     public Formation toEntity() {
         Formation formation = new Formation();
         formation.setId(this.id);
@@ -70,6 +55,7 @@ public class FormationDto {
         formation.setDateDebut(this.dateDebut);
         formation.setDateFin(this.dateFin);
         formation.setStatut(this.statut);
+      
         return formation;
     }
 }

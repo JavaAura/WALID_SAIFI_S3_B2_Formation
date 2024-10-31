@@ -2,22 +2,24 @@ package com.Formation.Gestion.model.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Table(name = "formation")
 @Entity
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Formation {
-
 
     @Getter
     @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Getter
     @Setter
@@ -77,7 +79,7 @@ public class Formation {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, orphanRemoval = true )
+    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL)
     private List<Apprenant> apprenants;
 
 

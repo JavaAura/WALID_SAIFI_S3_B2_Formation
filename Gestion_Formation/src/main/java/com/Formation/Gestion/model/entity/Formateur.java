@@ -2,11 +2,14 @@ package com.Formation.Gestion.model.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+
+@Builder
 @Table(name = "formateur")
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Formateur {
 
     @Getter

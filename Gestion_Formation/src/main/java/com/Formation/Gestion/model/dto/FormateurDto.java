@@ -25,7 +25,7 @@ public class FormateurDto {
     private Long classeId;
 
 
-    public FormateurDto toDto(Formateur entity) {
+    public static FormateurDto toDto(Formateur entity) {
          return FormateurDto.builder()
                  .id(entity.getId())
                  .nom(entity.getNom())

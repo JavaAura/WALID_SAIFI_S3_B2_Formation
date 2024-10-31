@@ -39,8 +39,6 @@ public class ApprenantDto {
                 .prenom(apprenant.getPrenom())
                 .email(apprenant.getEmail())
                 .niveau(apprenant.getNiveau())
-                .classeId(apprenant.getClasse().getId())
-                .formationId(Long.valueOf(apprenant.getFormation().getId()))
                 .build();
     }
 

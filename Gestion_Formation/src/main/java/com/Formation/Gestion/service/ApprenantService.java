@@ -1,14 +1,11 @@
 package com.Formation.Gestion.service;
 
-import com.Formation.Gestion.model.dto.ApprenantDto;
 import com.Formation.Gestion.model.entity.Apprenant;
 import com.Formation.Gestion.repository.ApprenantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ApprenantService {

@@ -5,6 +5,7 @@ import com.Formation.Gestion.model.dto.ClasseDto;
 import com.Formation.Gestion.model.entity.Classe;
 import com.Formation.Gestion.service.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,20 +41,25 @@ public class ClasseController {
 
 
     @PutMapping("/modifier/{id}")
-    public ResponseEntity<Map<String, Object>> modifierClasse(@PathVariable Long id, @RequestParam String name, @RequestParam int numSalle) {
+    public ResponseEntity<Map<String, Object>> modifierClasse(@PathVariable Long id,
+                                                              @RequestBody ClasseDto classeDto) {
         Optional<Classe> optionalClasse = Optional.ofNullable(classeService.getClasseById(id));
 
-        Classe classe = optionalClasse.get();
-        classe.setNom(name);
-        classe.setNumSalle(numSalle);
-        Classe updatedClasse = this.classeService.modifierClasse(classe);
+            Classe classe = optionalClasse.get();
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("message", "Classe modifiée avec succès.");
-        response.put("classe", updatedClasse);
+            classe.setNom(classeDto.getNom());
+            classe.setNumSalle(classeDto.getNumSalle());
 
-        return ResponseEntity.ok(response);
+
+            Classe updatedClasse = classeService.modifierClasse(classe);
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Classe modifiée avec succès.");
+            response.put("classe", ClasseDto.toDto(updatedClasse));
+            return ResponseEntity.ok(response);
+
     }
+
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteClasse(@PathVariable long id) {

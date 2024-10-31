@@ -26,7 +26,7 @@ public class ClasseDto {
     private int numSalle;
 
     private List<Long> apprenantsIds;
-    private List<Long> formateursIds; 
+    private List<Long> formateursIds;
 
     public static ClasseDto toDto(Classe entity) {
         return ClasseDto.builder()

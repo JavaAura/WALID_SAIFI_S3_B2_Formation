@@ -1,5 +1,6 @@
 package com.Formation.Gestion.model.entity;
 
+import com.Formation.Gestion.model.dto.ClasseDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -53,8 +54,13 @@ public class Classe {
 
     }
 
-    @Override
-    public String toString() {
-        return "Classe: " + nom + ", Salle: " + numSalle;
+
+    public static Classe toEntity(ClasseDto classeDto) {
+        Classe classe = new Classe();
+        classe.setId(classeDto.getId());
+        classe.setNom(classeDto.getNom());
+        classe.setNumSalle(classeDto.getNumSalle());
+        return classe;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.Formation.Gestion.controller;
 
 
+import com.Formation.Gestion.model.dto.ClasseDto;
 import com.Formation.Gestion.model.entity.Classe;
 import com.Formation.Gestion.service.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,19 @@ public class ClasseController {
 
 
     @GetMapping("/all")
-    public List<Classe> getAllClasses() {
-        return classeService.getAllClasse();
+    public List<ClasseDto> getAllClasses() {
+        List<ClasseDto> classeDtos = new ArrayList<>();
+        classeService.getAllClasse().forEach(classe -> classeDtos.add(ClasseDto.toDto(classe)));
+        return classeDtos;
     }
+
 
     @PostMapping("/ajouter")
     public ResponseEntity<Classe> ajouterClasse(@RequestParam String name, @RequestParam int numSalle) {
-        Classe classe = new Classe();
-        classe.setNom(name);
-        classe.setNumSalle(numSalle);
-        Classe savedClasse = this.classeService.ajouterClasse(classe);
+        ClasseDto classeDto = new ClasseDto();
+        classeDto.setNom(name);
+        classeDto.setNumSalle(numSalle);
+        Classe savedClasse = this.classeService.ajouterClasse(Classe.toEntity(classeDto));
         return ResponseEntity.ok(savedClasse);
     }
 

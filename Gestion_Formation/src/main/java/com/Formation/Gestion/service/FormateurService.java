@@ -1,11 +1,16 @@
 package com.Formation.Gestion.service;
 
+import com.Formation.Gestion.model.entity.Classe;
 import com.Formation.Gestion.model.entity.Formateur;
+import com.Formation.Gestion.model.entity.Formation;
+import com.Formation.Gestion.repository.ClasseRepo;
 import com.Formation.Gestion.repository.FormateurRepo;
+import com.Formation.Gestion.repository.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -13,6 +18,14 @@ public class FormateurService {
 
     @Autowired
     FormateurRepo formateurRepo;
+
+    @Autowired
+    private FormationRepo formationRepository;
+
+    @Autowired
+    private ClasseRepo classeRepository;
+
+
 
     public List<Formateur> getAll(){
         return formateurRepo.findAll();
@@ -38,4 +51,29 @@ public class FormateurService {
         formateurRepo.deleteById(id);
     }
 
+
+    public Formateur affecterFormation(Long formateurId, Long formationId) {
+        Optional<Formateur> formateurOpt = formateurRepo.findById(formateurId);
+        Optional<Formation> formationOpt = formationRepository.findById(formationId);
+
+        if (formateurOpt.isPresent() && formationOpt.isPresent()) {
+            Formateur formateur = formateurOpt.get();
+            formateur.setFormation(formationOpt.get());
+            return formateurRepo.save(formateur);
+        }
+        return null;
+    }
+
+    public Formateur affecterClasse(Long formateurId, Long classeId) {
+        Optional<Formateur> formateurOpt = formateurRepo.findById(formateurId);
+        Optional<Classe> classeOpt = classeRepository.findById(classeId);
+
+        if (formateurOpt.isPresent() && classeOpt.isPresent()) {
+            Formateur formateur = formateurOpt.get();
+            formateur.setClasse(classeOpt.get());
+            return formateurRepo.save(formateur);
+        }
+        return null;
+    }
 }
+

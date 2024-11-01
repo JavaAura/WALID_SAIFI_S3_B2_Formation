@@ -61,4 +61,23 @@ public class FormateurController {
         formateurService.supprimerFormateur(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+    @PutMapping("/affecterFormation/{formateurId}/{formationId}")
+    public ResponseEntity<FormateurDto> affecterFormation(@PathVariable Long formateurId, @PathVariable Long formationId) {
+        Formateur formateur = formateurService.affecterFormation(formateurId, formationId);
+        if (formateur != null) {
+            return new ResponseEntity<>(FormateurDto.toDto(formateur), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/affecterClasse/{formateurId}/{classeId}")
+    public ResponseEntity<FormateurDto> affecterClasse(@PathVariable Long formateurId, @PathVariable Long classeId) {
+        Formateur formateur = formateurService.affecterClasse(formateurId, classeId);
+        if (formateur != null) {
+            return new ResponseEntity<>(FormateurDto.toDto(formateur), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

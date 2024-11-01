@@ -56,4 +56,25 @@ public class ApprenantController {
         apprenantService.supprimerApprenant(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+    @PutMapping("/affecterClasse/{apprenantId}/{classeId}")
+    public ResponseEntity<ApprenantDto> affecterClasse(@PathVariable Long apprenantId, @PathVariable Long classeId) {
+        Apprenant apprenant = apprenantService.affecterClasse(apprenantId, classeId);
+        if (apprenant != null) {
+            return new ResponseEntity<>(ApprenantDto.toDto(apprenant), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/affecterFormation/{apprenantId}/{formationId}")
+    public ResponseEntity<ApprenantDto> affecterFormation(@PathVariable Long apprenantId, @PathVariable Long formationId) {
+        Apprenant apprenant = apprenantService.affecterFormation(apprenantId, formationId);
+        if (apprenant != null) {
+            return new ResponseEntity<>(ApprenantDto.toDto(apprenant), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -55,7 +55,7 @@ public class FormationDto {
         formation.setDateDebut(this.dateDebut);
         formation.setDateFin(this.dateFin);
         formation.setStatut(this.statut);
-      
+
         return formation;
     }
 }

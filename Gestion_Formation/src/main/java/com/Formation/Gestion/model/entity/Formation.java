@@ -58,13 +58,13 @@ public class Formation {
     @Setter
     @Column(name = "dateFin")
     private LocalDate dateFin;
-
+/*
     @Getter
     @Setter
     @ManyToOne
     @JoinColumn(name = "formation_id")
     private Formation formation;
-
+*/
     @Getter
     @Setter
     @ManyToOne
@@ -88,6 +88,7 @@ public class Formation {
     @Enumerated(EnumType.STRING)
     @Column(name = "statut", nullable = false)
     private Statut statut;
+
 
 
 }

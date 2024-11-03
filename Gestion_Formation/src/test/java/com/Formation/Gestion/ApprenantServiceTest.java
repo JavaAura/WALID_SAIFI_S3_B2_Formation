@@ -7,7 +7,6 @@ import com.Formation.Gestion.repository.FormationRepo;
 import com.Formation.Gestion.service.ApprenantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -42,7 +41,7 @@ class ApprenantServiceTest {
         apprenant.setId(1L);
         apprenant.setNom("Doe");
         apprenant.setPrenom("John");
-        apprenant.setEmail("john.doe@example.com");
+        apprenant.setEmail("walid@gmail.com");
     }
 
     @Test

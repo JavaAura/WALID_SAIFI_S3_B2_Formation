@@ -1,18 +1,18 @@
-INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capaciteMax, dateDebut, dateFin, statut, classe_id, formateur_id)
+INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capacite_max, date_debut, date_fin, statut, classe_id, formateur_id)
 VALUES ('Développement Java', 'Intermédiaire', 'Connaissances de base en programmation', 10, 30, '2024-01-10', '2024-06-10', 'ACTIVE', NULL, NULL);
 
-INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capaciteMax, dateDebut, dateFin, statut, classe_id, formateur_id)
+INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capacite_max, date_debut, date_fin, statut, classe_id, formateur_id)
 VALUES ('Bases de données', 'Débutant', 'Aucun', 5, 20, '2024-02-01', '2024-04-30', 'ACTIVE', NULL, NULL);
 
-INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capaciteMax, dateDebut, dateFin, statut, classe_id, formateur_id)
+INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capacite_max,date_debut, date_fin, statut, classe_id, formateur_id)
 VALUES ('Web Design', 'Intermédiaire', 'Connaissance de base en HTML/CSS', 8, 25, '2024-03-15', '2024-05-15', 'ACTIVE', NULL, NULL);
 
-INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capaciteMax, dateDebut, dateFin, statut, classe_id, formateur_id)
+INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capacite_max, date_debut, date_fin, statut, classe_id, formateur_id)
 VALUES ('Data Science', 'Avancé', 'Statistiques et programmation Python', 12, 30, '2024-04-01', '2024-08-01', 'ACTIVE', NULL, NULL);
 
 
 
-INSERT INTO formation (titre, niveau, prerequis, capacite_Min, capaciteMax, dateDebut, dateFin, statut, classe_id, formateur_id)
+INSERT INTO formation (titre, niveau, prerequis, capacite_Min, date_fin, date_debut, date_fin, statut, classe_id, formateur_id)
 VALUES ('Gestion de projet', 'Avancé', 'Expérience en gestion de projet', 5, 20, '2024-02-01', '2024-07-01', 'ACTIVE', NULL, NULL);
 INSERT INTO apprenants (id, nom, prenom, email, niveau, classe_id, formation_id)
 VALUES (NULL, 'Durand', 'Paul', 'p.durand@example.com', 'Intermédiaire', 1, NULL);

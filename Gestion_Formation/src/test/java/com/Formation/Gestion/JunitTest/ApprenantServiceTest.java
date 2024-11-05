@@ -1,4 +1,4 @@
-package com.Formation.Gestion;
+package com.Formation.Gestion.JunitTest;
 
 import com.Formation.Gestion.model.entity.Apprenant;
 import com.Formation.Gestion.repository.ApprenantRepo;
@@ -12,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

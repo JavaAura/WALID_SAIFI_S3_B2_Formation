@@ -1,4 +1,4 @@
-package com.Formation.Gestion;
+package com.Formation.Gestion.JunitTest;
 
 import com.Formation.Gestion.model.entity.Formation;
 import com.Formation.Gestion.repository.FormationRepo;
